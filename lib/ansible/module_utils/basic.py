@@ -129,6 +129,8 @@ except Exception:
     except Exception:
         pass
 
+AVAILABLE_HASH_ALGORITHMS.pop('md5', None)
+
 from ansible.module_utils.common._collections_compat import (
     KeysView,
     Mapping, MutableMapping,
