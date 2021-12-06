@@ -129,7 +129,10 @@ except Exception:
     except Exception:
         pass
 
-AVAILABLE_HASH_ALGORITHMS.pop('md5', None)
+from ansible.module_utils.facts.system.fips import FipsFactCollector
+fips_facts = FipsFactCollector().collect()
+if fips_facts['fips']:
+    AVAILABLE_HASH_ALGORITHMS.pop('md5', None)
 
 from ansible.module_utils.common._collections_compat import (
     KeysView,
